@@ -2,5 +2,7 @@
 
 function getAllPokemons($link) {
     $sql = 'SELECT * FROM pokemon';
-    mysql_query();
+    $query = mysqli_query($link, $sql);
+
+    return mysqli_fetch_all($query);
 }
