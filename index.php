@@ -10,3 +10,14 @@ $link = database_connect($parameters);
 $pokemons = getAllPokemons($link);
 
 var_dump($pokemons);
+
+
+
+
+
+$pokemon = [
+    'name' => 'Pikachu',
+    'type' => 'electric',
+];
+
+createPokemon($link, $pokemon);
