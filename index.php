@@ -1,35 +1,25 @@
 <?php
 
-require 'function/database.fn.php';
-require 'function/pokemon.fn.php';
-
-$parameters = require 'config/parameters.php';
-
-$link = database_connect($parameters);
+$link = require '_header.php';
 
 $pokemons = getAllPokemons($link);
 
-//var_dump($pokemons);
+?>
 
-$pokemon = [
-    'name'    => 'Mew',
-    'type'    => 'water',
-    'hp'      => 75,
-    'level'   => 99,
-    'attack'  => 45,
-    'defense' => 40,
-];
-
-if (false === createPokemon($link, $pokemon)) {
-    var_dump(mysqli_error($link));
-}
-
-$pokemon = getPokemon($link, 999);
-
-if (null === $pokemon) {
-    echo 'Aucun pokémon avec cet id';
-}
-
-var_dump($pokemon);
-
-echo '<h1>'.$pokemon['name'].'</h1>';
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pokemons</title>
+</head>
+<body>
+<?php
+    foreach ($pokemons as $pokemon) {
+        echo '<article>';
+            echo '<h1><a href="pokemon.php?id='.$pokemon['id'].'">'.$pokemon['name'].'</a></h1>';
+            echo '<small>'.$pokemon['type'].'</small>';
+        echo '</article>';
+    }
+?>
+</body>
+</html>
