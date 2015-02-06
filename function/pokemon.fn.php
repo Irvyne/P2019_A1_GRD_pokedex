@@ -42,3 +42,9 @@ function createPokemon($link, array $pokemon) {
 //TODO update
 
 //TODO delete
+
+function deletePokemon($link, $id) {
+    $sql = "DELETE FROM pokemon WHERE id = $id";
+
+    return mysqli_query($link, $sql);
+}
