@@ -16,4 +16,4 @@ if (null === $pokemon) {
     die('Pokemon Not Found');
 }
 
-var_dump($pokemon);
+include 'template/pokemon.php';
